@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Add Question</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="container">
+<h1 style="color: yellow">You can make your own Polls here.</h1>
+<h3 style="color: green">What's your doubt ? Question it here...</h3>
+
+<form  method="post">
+	{% csrf_token %}
+	<dl>
+		<dt>
+		<label style="color: white" for="question_text">Question:</label>
+		</dt>
+		<dd>
+		<input value="{{request.GET.question_input}}" type="text"style="color:black" name="question_input" placeholder="Add your question?" required/>	
+		</dd>
+	</dl>			
+    
+	<input class="btn btn-primary" style="background-color: #01579b ;color: #ffffff"  type="submit" value="Save"/>
+			
+</form>
+</div>
+{% endblock %}

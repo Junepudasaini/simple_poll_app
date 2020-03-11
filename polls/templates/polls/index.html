@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+		
+	
+	
+{% block body %}
+<br>
+<div class="container">
+	<h1 style="color: yellow">This is our Polls.</h1>
+	{% if latest_question_list %}
+	<ul>
+	{% for question in latest_question_list %}
+		<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+	{% endfor %}    
+		</ul> 
+	{% else %}
+		<p>No polls are availabel.</p>
+    {% endif %}    
+
+	<form class="form-inline" action="{% url 'polls:addpoll'  %}" method="post">
+	{% csrf_token %}
+
+    <input class="btn" style="background-color: #004d40 ;color: #ffffff" type="submit"value="Add Poll"/>
+    </form> 
+	</div>    
+{% endblock %}      
+	
+		
+		
+

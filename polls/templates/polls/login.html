@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<h2 style="color: green">Login</h2>
+<p style="color: yellow">Please enter your username and password:</p>
+<form method="post">
+	{% csrf_token %}
+	<label  style="color: white" class="active">Username:</label>
+	<input name="username" class="form-control" type="text" placeholder="Username" value=""/>
+	<label style="color: white" class="active">Password:</label>
+	<input name="password" class="form-control" type="password" placeholder="Password" value=""/>
+	<br>
+	<input class="btn" style="background-color: #004d40 ;color: #ffffff" type="submit"value="Login"/>
+</form>
+</div>
+{% endblock %}

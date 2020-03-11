@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+	<!DOCTYPE html>
+	<html>
+	<head>
+		{% block head %}
+		<title>Detail</title>
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		<div class="container">
+		    <h1 style="color: yellow">Give your vote.</h1>
+		    <h2 style="color: green">{{ question.question_text }}</h2>
+			{% if error_message %}<p><strong style="color: red">{{ error_message }}</strong></p>{% endif %}
+
+			<form action="{% url 'polls:vote' question.id %}" method="post">
+			{% csrf_token %}
+			{% for choice in question.choice_set.all %}
+			    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+			    <label for="choice{{ forloop.counter }}"><h5 style="color: white">{{ choice.choice_text }}</h5></label><br>
+			{% endfor %}
+			<input type="submit" value="Vote">
+			</form>
+			<br>
+			<form action="{% url 'polls:add_choice' question.id %}" >
+
+			    <input class="btn" style="background-color: #004d40 ;color: #ffffff" type="submit"value="Add Choice"/>
+			</form>    
+		</div>	
+		{% endblock %} 
+	</body>
+	</html>>
+

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Add Choice</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<br>	
+<h1 style="color: yellow">You can provide your own Poll's Choice here.</h1>
+<h2 style="color: green">{{ question.question_text }}</h2>
+<br>
+<form  method="post">
+	{% csrf_token %}
+
+    <input value="{{request.GET.choice_input}}" type="text"style="color:black" name="choice_input" placeholder="Add your choice?" required/>
+   
+    <input class="btn btn-primary" style="background-color: #01579b ;color: #ffffff"  type="submit" value="Save"/>			
+</form>
+</div>
+{% endblock %}
+
+

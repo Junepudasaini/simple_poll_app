@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>Result</title>
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+	<div class="container">
+	<h1 style="color: yellow">This is your result.</h1>
+    <h2 style="color: green">{{ question.question_text }}</h2>
+
+    <ul>
+	{% for choice in question.choice_set.all %}
+	    <li><h5 style="color: white">{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</h5></li>
+	{% endfor %}    
+    </ul>
+    <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    </div>
+    {% endblock %}
+</body>
+</html>
